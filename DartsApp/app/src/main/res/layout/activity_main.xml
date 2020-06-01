@@ -6,13 +6,174 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:id="@+id/ivBackground"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/background"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/background" />
+
     <TextView
+        android:id="@+id/tvBeginScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="14dp"
+        android:text="@string/_501"
+        android:textAlignment="center"
+        android:textColor="@color/colorButton"
+        android:textSize="88sp"
+        app:layout_constraintBottom_toTopOf="@+id/etPlayer1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ivBackground" />
+
+    <Button
+        android:id="@+id/btnStart"
+        android:layout_width="0dp"
+        android:layout_height="74dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/custom_rounded_corners"
+        android:backgroundTint="@color/colorButton"
+        android:elevation="4dp"
+        android:shadowColor="#F2000000"
+        android:text="@string/start_game"
+        android:textColor="@color/colorText"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/etNumberOfLegs"
+        android:layout_width="0dp"
+        android:layout_height="74dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="14dp"
+        android:background="@drawable/custom_rounded_corners"
+        android:backgroundTint="#FFFFFF"
+        android:elevation="4dp"
+        android:textColorHint="#BEC5CE"
+        android:hint="@string/number_of_legs"
+        android:inputType="number"
+        android:shadowColor="#000000"
+        app:layout_constraintBottom_toTopOf="@+id/btnStart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:autofillHints="" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="14dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="@+id/ivBackground"
+        app:layout_constraintStart_toStartOf="@+id/ivBackground">
+
+        <Button
+            android:id="@+id/btnLegs"
+            android:layout_width="wrap_content"
+            android:layout_height="74dp"
+            android:layout_marginStart="4dp"
+            android:layout_weight="1"
+            android:background="@drawable/custom_rounded_cornersside1"
+            android:backgroundTint="@color/colorButton3"
+            android:text="@string/legs"
+            android:textColor="@color/colorText" />
+
+        <Button
+            android:id="@+id/btnSets"
+            android:layout_width="wrap_content"
+            android:layout_height="74dp"
+            android:layout_marginEnd="4dp"
+            android:layout_weight="1"
+            android:background="@drawable/custom_rounded_cornersside2"
+            android:backgroundTint="@color/colorButton2"
+            android:text="@string/sets"
+            android:textColor="@color/colorButton" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="14dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/etNumberOfLegs"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/btnBestof"
+            android:layout_width="wrap_content"
+            android:layout_height="74dp"
+            android:layout_marginStart="4dp"
+            android:layout_weight="1"
+            android:background="@drawable/custom_rounded_cornersside1"
+            android:backgroundTint="@color/colorButton2"
+            android:text="@string/best_of"
+            android:textColor="@color/colorButton" />
+
+        <Button
+            android:id="@+id/btnFirstTo"
+            android:layout_width="wrap_content"
+            android:layout_height="74dp"
+            android:layout_marginEnd="4dp"
+            android:layout_weight="1"
+            android:background="@drawable/custom_rounded_cornersside2"
+            android:backgroundTint="@color/colorButton3"
+            android:text="@string/first_to"
+            android:textColor="@color/colorText" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/etPlayer2"
+        android:layout_width="0dp"
+        android:layout_height="74dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="14dp"
+        android:background="@drawable/custom_rounded_corners"
+        android:backgroundTint="#FFFFFF"
+        android:elevation="4dp"
+        android:hint="@string/name_player_2"
+        android:textColorHint="#BEC5CE"
+        android:inputType="textPersonName"
+        android:shadowColor="#000000"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:autofillHints="" />
+
+    <EditText
+        android:id="@+id/etPlayer1"
+        android:layout_width="0dp"
+        android:layout_height="74dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="14dp"
+        android:autofillHints=""
+        android:background="@drawable/custom_rounded_corners"
+        android:backgroundTint="#FFFFFF"
+        android:elevation="4dp"
+        android:hint="@string/player_1"
+        android:textColorHint="#BEC5CE"
+        android:inputType="textPersonName"
+        android:shadowColor="#000000"
+        android:textColor="@color/colorButton3"
+        app:layout_constraintBottom_toTopOf="@+id/etPlayer2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
