@@ -10,4 +10,6 @@
     <string name="name_player_2">Name Player 2</string>
     <string name="player_1">Name Player 1</string>
     <string name="_501">501</string>
+    <string name="throw_for_the_bull">Throw for the Bull</string>
+    <string name="select_player_closest_to_bull">Select player closest to Bull</string>
 </resources>
