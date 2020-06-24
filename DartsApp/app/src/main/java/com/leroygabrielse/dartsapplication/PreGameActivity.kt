@@ -19,6 +19,19 @@ class PreGameActivity : AppCompatActivity() {
 
     @SuppressLint("ResourceAsColor")
     private fun initViews(){
+
+        val bundle: Bundle? = intent.extras
+
+        bundle?.let{
+            bundle.apply {
+                val game: Game? = getParcelable("EXTRA_GAME")
+                if (game != null){
+                    btnPlayer1.text = "${game.playerOneName}"
+                    btnPlayer2.text = "${game.playerTwoName}"
+                }
+            }
+        }
+
         btnStart.setOnClickListener {view ->
             val intent = Intent(this, GameActivity::class.java)
             startActivityForResult(intent,
@@ -26,10 +39,10 @@ class PreGameActivity : AppCompatActivity() {
             )
         }
         btnPlayer1.setOnClickListener {
-            btnPlayer1.backgroundTintList = ColorStateList.valueOf(R.color.colorButton4)
+
         }
         btnPlayer2.setOnClickListener {
-            btnPlayer2.backgroundTintList = ColorStateList.valueOf(R.color.colorButton4)
+
         }
     }
 }

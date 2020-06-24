@@ -18,6 +18,11 @@ class GameActivity : AppCompatActivity() {
     }
     private fun initViews(){
 
+        tvThrownP1.setText("Darts: 0")
+        tvThrownP2.setText("Darts: 0")
+        tvAvgP1.setText("Avg: 0")
+        tvAvgP2.setText("Avg: 0")
+
         tvHintP1.visibility = View.INVISIBLE
         tvHintP2.visibility = View.INVISIBLE
 
@@ -62,15 +67,20 @@ class GameActivity : AppCompatActivity() {
         }
 
         btnBackspace.setOnClickListener {
-            if(tvScoreInput.text.toString().length > )
-            val newScore = tvScoreInput.text.toString().substring(0, tvScoreInput.text.toString().length - 1)
-            tvScoreInput.setText(newScore)
+            if(tvScoreInput.text.toString().length > 1){
+                val newScore = tvScoreInput.text.toString().substring(0, tvScoreInput.text.toString().length - 1)
+                tvScoreInput.setText(newScore)
+            }
+            else if (tvScoreInput.text.toString().length == 1){
+                tvScoreInput.setText("0")
+            }
+
         }
 
     }
     fun enterNumber(number: String){
         val score = tvScoreInput.text.toString()
-        if (score.toInt()<99){
+        if (score.toInt()<=18){
             if (score == "0"){
                 tvScoreInput.setText(number)
             }

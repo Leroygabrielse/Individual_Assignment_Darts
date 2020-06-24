@@ -1,15 +1,18 @@
 package com.leroygabrielse.dartsapplication
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.content.ContextCompat
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.activity_game.*
 import kotlinx.android.synthetic.main.activity_main.*
 
 const val PREGAME_REQUEST_CODE = 100
 const val HISTORY_REQUEST_CODE = 200
+const val EXTRA_GAME = "EXTRA_GAME"
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,6 +24,7 @@ class MainActivity : AppCompatActivity() {
         }
     @SuppressLint("ResourceAsColor")
     private fun initViews(){
+
         btnStart.setOnClickListener {
             Snackbar.make(tvBeginScore, "Works", Snackbar.LENGTH_LONG).show()
         }
@@ -39,10 +43,7 @@ class MainActivity : AppCompatActivity() {
 
         }
         btnStart.setOnClickListener { view ->
-            val intent = Intent(this, PreGameActivity::class.java)
-            startActivityForResult(intent,
-                PREGAME_REQUEST_CODE
-            )
+            onStartClick()
         }
         fabHistory.setOnClickListener {
                 view ->
@@ -50,6 +51,15 @@ class MainActivity : AppCompatActivity() {
             startActivityForResult(intent,
                 HISTORY_REQUEST_CODE
             )
+        }
+
+    }
+    private fun onStartClick(){
+        if(etPlayer1.text.toString().isNotBlank() && etPlayer2.text.toString().isNotBlank() && etNumberOfLegs.text.toString().isNotBlank()){
+            val game = Game("First to 5 legs",etPlayer1.text.toString(), etPlayer2.text.toString(), etNumberOfLegs.text.toString().toInt())
+            val intent = Intent(this, PreGameActivity::class.java)
+            intent.putExtra(EXTRA_GAME, game)
+            startActivityForResult(intent, PREGAME_REQUEST_CODE)
         }
     }
 }
