@@ -18,6 +18,18 @@ class GameActivity : AppCompatActivity() {
     }
     private fun initViews(){
 
+        val bundle: Bundle? = intent.extras
+        bundle?.let{
+            bundle.apply {
+                val game: Game? = getParcelable("EXTRA_GAME_DATA")
+                if (game != null){
+                    tvGameName.text = "${game.GameName}"
+                    tvNameP1.text = "${game.playerOneName}"
+                    tvNameP2.text = "${game.playerTwoName}"
+                }
+            }
+        }
+
         tvThrownP1.setText("Darts: 0")
         tvThrownP2.setText("Darts: 0")
         tvAvgP1.setText("Avg: 0")

@@ -12,6 +12,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.activity_pre_game.*
 const val GAME_REQUEST_CODE = 300
+const val EXTRA_GAME_DATA = "EXTRA_GAME_DATA"
+
+var playerOneName = ""
+var playerTwoName = ""
+var gameName = ""
+var numberOfLegsOrSets = ""
 
 class PreGameActivity : AppCompatActivity() {
 
@@ -34,15 +40,18 @@ class PreGameActivity : AppCompatActivity() {
                 if (game != null){
                     btnPlayer1.text = "${game.playerOneName}"
                     btnPlayer2.text = "${game.playerTwoName}"
+
+                    playerOneName = "${game.playerOneName}"
+                    playerTwoName = "${game.playerTwoName}"
+                    gameName = "${game.GameName}"
+                    numberOfLegsOrSets = "${game.numberOfLegsOrSets}"
                 }
             }
         }
 
         btnStart.setOnClickListener {view ->
-            val intent = Intent(this, GameActivity::class.java)
-            startActivityForResult(intent,
-                GAME_REQUEST_CODE
-            )
+            onStartClick()
+
         }
         btnPlayer1.setOnClickListener {
             btnPlayer1.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(applicationContext, R.color.colorButton4))
@@ -57,4 +66,12 @@ class PreGameActivity : AppCompatActivity() {
             btnPlayer1.setTextColor(ContextCompat.getColor(applicationContext, R.color.colorButton))
         }
     }
+    private fun onStartClick(){
+        val game = Game(gameName, playerOneName, playerTwoName, numberOfLegsOrSets.toInt())
+        val intent = Intent(this, GameActivity::class.java)
+        intent.putExtra(EXTRA_GAME_DATA, game)
+        startActivityForResult(intent, GAME_REQUEST_CODE)
+
+    }
 }
+
