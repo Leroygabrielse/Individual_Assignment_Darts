@@ -10,12 +10,12 @@ class StatsAdapter (private val stats: List<Stats>) : RecyclerView.Adapter<Stats
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         fun bind(stats: Stats) {
-            itemView.tvlegNumber.text = stats.legNumber.toString()
-            itemView.tvWinner.text = stats.winner
-            itemView.tvAvgP1.text = stats.avgp1.toString()
-            itemView.tvAvgP2.text = stats.avgp2.toString()
-            itemView.tvThrownP1.text = stats.thrownp1.toString()
-            itemView.tvThrownP2.text =stats.thrownp2.toString()
+            itemView.tvlegNumber.text = "Leg number: " + stats.legNumber.toString()
+            itemView.tvWinner.text = "Winner: " + stats.winner
+            itemView.tvAvgP1.text = "Average player 1: " + stats.avgp1
+            itemView.tvAvgP2.text = "Average player 2: " +stats.avgp2
+            itemView.tvThrownP1.text = "Darts Thrown player 1: " +stats.thrownp1.toString()
+            itemView.tvThrownP2.text ="Darts Thrown player 2: " +stats.thrownp2.toString()
         }
     }
 

@@ -3,59 +3,67 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp">
 
-    <TextView
-        android:id="@+id/tvlegNumber"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="legNumber"
-        android:textColor="@color/colorButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tvWinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Winner"
-        android:textColor="@color/colorButton"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tvAvgP1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="AVGp1"
-        android:textColor="@color/colorButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvlegNumber" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/tvAvgP2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Avgp2"
-        android:textColor="@color/colorButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvWinner" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorButton"
+            android:orientation="vertical"
+            android:padding="8dp">
 
-    <TextView
-        android:id="@+id/tvThrownP1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="thrownP1"
-        android:textColor="@color/colorButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvAvgP1" />
+            <TextView
+                android:id="@+id/tvlegNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="legNumber"
+                android:textColor="@color/colorText" />
 
-    <TextView
-        android:id="@+id/tvThrownP2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="thrownp2"
-        android:textColor="@color/colorButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvAvgP2" />
+            <TextView
+                android:id="@+id/tvWinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Winner"
+                android:textColor="@color/colorText" />
+
+            <TextView
+                android:id="@+id/tvAvgP1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="AVGp1"
+                android:textColor="@color/colorText" />
+
+            <TextView
+                android:id="@+id/tvAvgP2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Avgp2"
+                android:textColor="@color/colorText" />
+
+            <TextView
+                android:id="@+id/tvThrownP1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="thrownP1"
+                android:textColor="@color/colorText" />
+
+            <TextView
+                android:id="@+id/tvThrownP2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="thrownp2"
+                android:textColor="@color/colorText" />
+        </LinearLayout>
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
