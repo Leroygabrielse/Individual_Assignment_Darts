@@ -10,6 +10,7 @@ import kotlinx.android.synthetic.main.activity_game.*
 
 const val GAMESTATS_REQUEST_CODE = 400
 var playerTurn = 0
+var tempScore = 0
 
 class GameActivity : AppCompatActivity() {
 
@@ -109,6 +110,9 @@ class GameActivity : AppCompatActivity() {
                 tvScoreInput.setText("0")
             }
 
+        }
+        btnUndo.setOnClickListener {
+            //undoScore()
         }
 
     }
