@@ -13,6 +13,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 const val PREGAME_REQUEST_CODE = 100
 const val HISTORY_REQUEST_CODE = 200
 const val EXTRA_GAME = "EXTRA_GAME"
+var firstToString = "First to "
+var legsOrSetsString = " Legs"
 
 class MainActivity : AppCompatActivity() {
 
@@ -31,16 +33,26 @@ class MainActivity : AppCompatActivity() {
         btnSets.setOnClickListener {
             etNumberOfLegs.setHint("Number of Sets")
             btnSets.setBackgroundColor(R.color.colorButton3)
+            if (legsOrSetsString == " Legs"){
+                legsOrSetsString = " Sets"
+            }
 
         }
         btnLegs.setOnClickListener {
             etNumberOfLegs.setHint("Number of Legs")
+            if (legsOrSetsString == " Sets"){
+                legsOrSetsString = " Legs"
+            }
         }
         btnBestof.setOnClickListener {
-
+            if(firstToString == "First to "){
+                firstToString = "Best of "
+            }
         }
         btnFirstTo.setOnClickListener {
-
+            if(firstToString == "Best of "){
+                firstToString = "First to "
+            }
         }
         btnStart.setOnClickListener { view ->
             onStartClick()
@@ -56,7 +68,7 @@ class MainActivity : AppCompatActivity() {
     }
     private fun onStartClick(){
         if(etPlayer1.text.toString().isNotBlank() && etPlayer2.text.toString().isNotBlank() && etNumberOfLegs.text.toString().isNotBlank()){
-            val game = Game("First to 5 legs",etPlayer1.text.toString(), etPlayer2.text.toString(), etNumberOfLegs.text.toString().toInt())
+            val game = Game(firstToString + etNumberOfLegs.text.toString().toInt() + legsOrSetsString,etPlayer1.text.toString(), etPlayer2.text.toString(), etNumberOfLegs.text.toString().toInt())
             val intent = Intent(this, PreGameActivity::class.java)
             intent.putExtra(EXTRA_GAME, game)
             startActivityForResult(intent, PREGAME_REQUEST_CODE)

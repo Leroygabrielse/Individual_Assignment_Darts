@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.os.Bundle
+import android.os.Parcelable
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_pre_game.*
 const val GAME_REQUEST_CODE = 300
@@ -28,6 +29,7 @@ class PreGameActivity : AppCompatActivity() {
                 if (game != null){
                     btnPlayer1.text = "${game.playerOneName}"
                     btnPlayer2.text = "${game.playerTwoName}"
+                    btnStart.text = "${game.GameName}"
                 }
             }
         }
