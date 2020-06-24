@@ -3,6 +3,7 @@ package com.leroygabrielse.dartsapplication
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
+import android.content.res.ColorStateList
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.content.ContextCompat
@@ -32,10 +33,13 @@ class MainActivity : AppCompatActivity() {
         }
         btnSets.setOnClickListener {
             etNumberOfLegs.setHint("Number of Sets")
-            btnSets.setBackgroundColor(R.color.colorButton3)
             if (legsOrSetsString == " Legs"){
                 legsOrSetsString = " Sets"
             }
+            btnSets.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(applicationContext, R.color.colorButton3))
+            btnLegs.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(applicationContext, R.color.colorButton2))
+            btnSets.setTextColor(ContextCompat.getColor(applicationContext, R.color.colorText))
+            btnLegs.setTextColor(ContextCompat.getColor(applicationContext, R.color.colorButton))
 
         }
         btnLegs.setOnClickListener {
@@ -43,19 +47,37 @@ class MainActivity : AppCompatActivity() {
             if (legsOrSetsString == " Sets"){
                 legsOrSetsString = " Legs"
             }
+            btnLegs.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(applicationContext, R.color.colorButton3))
+            btnSets.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(applicationContext, R.color.colorButton2))
+            btnLegs.setTextColor(ContextCompat.getColor(applicationContext, R.color.colorText))
+            btnSets.setTextColor(ContextCompat.getColor(applicationContext, R.color.colorButton))
         }
         btnBestof.setOnClickListener {
             if(firstToString == "First to "){
                 firstToString = "Best of "
             }
+            btnBestof.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(applicationContext, R.color.colorButton3))
+            btnFirstTo.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(applicationContext, R.color.colorButton2))
+            btnBestof.setTextColor(ContextCompat.getColor(applicationContext, R.color.colorText))
+            btnFirstTo.setTextColor(ContextCompat.getColor(applicationContext, R.color.colorButton))
         }
         btnFirstTo.setOnClickListener {
             if(firstToString == "Best of "){
                 firstToString = "First to "
             }
+            btnFirstTo.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(applicationContext, R.color.colorButton3))
+            btnBestof.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(applicationContext, R.color.colorButton2))
+            btnFirstTo.setTextColor(ContextCompat.getColor(applicationContext, R.color.colorText))
+            btnBestof.setTextColor(ContextCompat.getColor(applicationContext, R.color.colorButton))
         }
         btnStart.setOnClickListener { view ->
-            onStartClick()
+            if(etNumberOfLegs.text.toString().toInt() % 2 == 0 && firstToString == "Best of "){
+                Snackbar.make(tvBeginScore, "No possible game, enter uneven or change game type", Snackbar.LENGTH_LONG).show()
+            }
+            else {
+                onStartClick()
+            }
+
         }
         fabHistory.setOnClickListener {
                 view ->
