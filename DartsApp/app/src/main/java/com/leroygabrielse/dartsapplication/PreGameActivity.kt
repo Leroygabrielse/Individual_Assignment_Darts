@@ -58,12 +58,16 @@ class PreGameActivity : AppCompatActivity() {
             btnPlayer2.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(applicationContext, R.color.colorText))
             btnPlayer1.setTextColor(ContextCompat.getColor(applicationContext, R.color.colorText))
             btnPlayer2.setTextColor(ContextCompat.getColor(applicationContext, R.color.colorButton))
+
+            switchStarter()
         }
         btnPlayer2.setOnClickListener {
             btnPlayer2.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(applicationContext, R.color.colorButton4))
             btnPlayer1.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(applicationContext, R.color.colorText))
             btnPlayer2.setTextColor(ContextCompat.getColor(applicationContext, R.color.colorText))
             btnPlayer1.setTextColor(ContextCompat.getColor(applicationContext, R.color.colorButton))
+
+            switchStarter()
         }
     }
     private fun onStartClick(){
@@ -72,6 +76,11 @@ class PreGameActivity : AppCompatActivity() {
         intent.putExtra(EXTRA_GAME_DATA, game)
         startActivityForResult(intent, GAME_REQUEST_CODE)
 
+    }
+    private fun switchStarter(){
+        val temp = playerOneName
+        playerOneName = playerTwoName
+        playerTwoName = temp
     }
 }
 
