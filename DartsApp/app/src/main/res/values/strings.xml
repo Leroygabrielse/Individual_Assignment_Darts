@@ -18,4 +18,5 @@
     <string name="avg_130">Avg: 130</string>
     <string name="avg_180">Avg: 180</string>
     <string name="_0">0</string>
+    <string name="textview">TextView</string>
 </resources>

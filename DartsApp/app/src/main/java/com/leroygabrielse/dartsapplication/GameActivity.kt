@@ -6,15 +6,22 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
+import androidx.activity.viewModels
+import androidx.lifecycle.Observer
 import kotlinx.android.synthetic.main.activity_game.*
+import java.time.LocalDate
 
 const val GAMESTATS_REQUEST_CODE = 400
 const val ENDGAMESTATS_REQUEST_CODE = 600
+const val EXTRA_ENDGAME = "EXTRA_ENDGAME"
 var playerTurn = 0
 var tempScore = 0
 var numberOfLegs = ""
 
+
 class GameActivity : AppCompatActivity() {
+
+    private val viewModel: GameActivityViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -185,7 +192,10 @@ class GameActivity : AppCompatActivity() {
             "Avg: " + Math.round(totalScore/totalTurns * 100) / 100.0
         )
     }
+
     private fun resetLeg(){
+        val stats = Stats(1,"Leroy", 12,12,3,3 )
+        viewModel.insertGame(stats)
         tvScoreP1.setText("501")
         tvScoreP2.setText("501")
         tvThrownP1.setText("Darts: 0")
@@ -195,6 +205,8 @@ class GameActivity : AppCompatActivity() {
     }
     private fun gameEnd(){
         val intent = Intent(this, EndGameActivity::class.java)
+        val endgameStats = EndGameStats("Leroy", "First to 2 Legs", "Leroy vs Thomas", LocalDate.now())
+        intent.putExtra(EXTRA_ENDGAME, endgameStats)
         startActivityForResult(intent, ENDGAMESTATS_REQUEST_CODE)
     }
 }
