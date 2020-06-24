@@ -1,12 +1,15 @@
 package com.leroygabrielse.dartsapplication
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_game.*
 
 const val GAMESTATS_REQUEST_CODE = 400
+var playerTurn = 0
 
 class GameActivity : AppCompatActivity() {
 
@@ -16,6 +19,7 @@ class GameActivity : AppCompatActivity() {
 
         initViews()
     }
+    @SuppressLint("ResourceAsColor")
     private fun initViews(){
 
         val bundle: Bundle? = intent.extras
@@ -45,6 +49,24 @@ class GameActivity : AppCompatActivity() {
             )
         }
         btnEnter.setOnClickListener {
+            if(tvScoreInput.text.toString().toInt() < 180){
+                if(playerTurn.equals(0)){
+                    handleEnter(tvScoreP1, tvAvgP1, tvThrownP1)
+
+                    tvScoreInput.setText("0")
+                    ivTurnP1.visibility = View.INVISIBLE
+                    ivTurnP2.visibility = View.VISIBLE
+                    playerTurn += 1
+                }
+                else {
+                    handleEnter(tvScoreP2, tvAvgP2, tvThrownP2)
+                    tvScoreInput.setText("0")
+                    ivTurnP2.visibility = View.INVISIBLE
+                    ivTurnP1.visibility = View.VISIBLE
+                    playerTurn -= 1
+
+                }
+            }
 
         }
         btnOne.setOnClickListener {
@@ -100,5 +122,24 @@ class GameActivity : AppCompatActivity() {
                 tvScoreInput.setText(score + number)
             }
         }
+    }
+    private fun handleEnter(textView: TextView, textView2: TextView, textView3: TextView){
+
+        //Score substract
+        textView.setText(
+            (textView.text.toString().toInt() - tvScoreInput.text.toString().toInt()).toString()
+        )
+
+        //DartsThrown
+        textView3.setText(
+            ("Darts: " + (textView3.text.toString().substring(7).toInt() + 3).toString())
+        )
+        //Avg
+        val totalScore = 501 - textView.text.toString().toDouble()
+        val totalTurns = textView3.text.toString().substring(7).toInt() / 3
+
+        textView2.setText(
+            "Avg: " + Math.round(totalScore/totalTurns * 100) / 100.0
+        )
     }
 }

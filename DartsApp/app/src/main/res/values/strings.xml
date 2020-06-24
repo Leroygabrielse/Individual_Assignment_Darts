@@ -13,4 +13,8 @@
     <string name="throw_for_the_bull">Throw for the Bull</string>
     <string name="select_player_closest_to_bull">Select player closest to Bull</string>
     <string name="todo">TODO</string>
+    <string name="darts_3">Darts: 3</string>
+    <string name="darts_31">Darts: 31</string>
+    <string name="avg_130">Avg: 130</string>
+    <string name="avg_180">Avg: 180</string>
 </resources>

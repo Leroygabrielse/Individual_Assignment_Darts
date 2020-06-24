@@ -239,6 +239,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvGameName">
 
         <LinearLayout
+            android:id="@+id/linLayP1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -337,7 +338,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginBottom="8dp"
-                    android:text="Avg: 180"
+                    android:text="@string/avg_180"
                     android:textColor="@color/colorButton"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
@@ -347,14 +348,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:text="Darts: 3"
+                    android:text="@string/darts_3"
                     android:textColor="@color/colorButton"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/tvSetsP1"
                     app:layout_constraintStart_toEndOf="@+id/tvScoreP1" />
 
                 <ImageView
-                    android:id="@+id/imageView2"
+                    android:id="@+id/ivTurnP1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="32dp"
@@ -367,6 +368,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/linLayP2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -442,7 +444,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginBottom="8dp"
-                    android:text="Avg: 130"
+                    android:text="@string/avg_130"
                     android:textColor="@color/colorButton"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
@@ -452,14 +454,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:text="Darts: 31"
+                    android:text="@string/darts_31"
                     android:textColor="@color/colorButton"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/tvSetsP2"
                     app:layout_constraintStart_toEndOf="@+id/tvScoreP2" />
 
                 <ImageView
-                    android:id="@+id/imageView3"
+                    android:id="@+id/ivTurnP2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="32dp"
