@@ -2,14 +2,18 @@ package com.leroygabrielse.dartsapplication
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import androidx.activity.viewModels
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.Observer
 import kotlinx.android.synthetic.main.activity_game.*
+import kotlinx.android.synthetic.main.activity_pre_game.*
 import java.time.LocalDate
+import kotlin.math.roundToInt
 
 const val GAMESTATS_REQUEST_CODE = 400
 const val ENDGAMESTATS_REQUEST_CODE = 600
@@ -23,12 +27,14 @@ class GameActivity : AppCompatActivity() {
 
     private val viewModel: GameActivityViewModel by viewModels()
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
 
         initViews()
     }
+    @RequiresApi(Build.VERSION_CODES.O)
     @SuppressLint("ResourceAsColor")
     private fun initViews(){
 
@@ -62,7 +68,7 @@ class GameActivity : AppCompatActivity() {
         btnEnter.setOnClickListener {
             if(tvScoreInput.text.toString().toInt() < 181){
                 if(playerTurn.equals(0)){
-                    handleEnter(tvScoreP1, tvAvgP1, tvThrownP1, tvLegsP1)
+                    handleEnter(tvScoreP1, tvAvgP1, tvThrownP1, tvLegsP1, tvNameP1)
 
                     tvScoreInput.setText("0")
                     ivTurnP1.visibility = View.INVISIBLE
@@ -70,7 +76,7 @@ class GameActivity : AppCompatActivity() {
                     playerTurn += 1
                 }
                 else {
-                    handleEnter(tvScoreP2, tvAvgP2, tvThrownP2, tvLegsP2)
+                    handleEnter(tvScoreP2, tvAvgP2, tvThrownP2, tvLegsP2, tvNameP2)
                     tvScoreInput.setText("0")
                     ivTurnP2.visibility = View.INVISIBLE
                     ivTurnP1.visibility = View.VISIBLE
@@ -147,7 +153,8 @@ class GameActivity : AppCompatActivity() {
             }
         }
     }
-    private fun handleEnter(textView: TextView, textView2: TextView, textView3: TextView, textView4: TextView){
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun handleEnter(textView: TextView, textView2: TextView, textView3: TextView, textView4: TextView, textView5: TextView){
 
         //Score substract
         textView.setText(
@@ -174,9 +181,10 @@ class GameActivity : AppCompatActivity() {
             if(textView4.text.toString().toInt() == numberOfLegs.toInt()){
                 gameEnd()
             }
-            resetLeg()
+            resetLeg(textView5)
         }
     }
+    @SuppressLint("SetTextI18n")
     private fun undoScore(textView: TextView, textView2: TextView, textView3: TextView){
         //set score back
         textView.setText(
@@ -189,12 +197,15 @@ class GameActivity : AppCompatActivity() {
         val totalScore = 501 - textView.text.toString().toDouble()
         val totalTurns = textView3.text.toString().substring(7).toInt() / 3
         textView2.setText(
-            "Avg: " + Math.round(totalScore/totalTurns * 100) / 100.0
+            "Avg: " + (totalScore / totalTurns * 100).roundToInt() / 100.0
         )
     }
 
-    private fun resetLeg(){
-        val stats = Stats(1,"Leroy", 12,12,3,3 )
+    private fun resetLeg(textView: TextView){
+        val legNumber = tvLegsP1.text.toString().toInt() + tvLegsP2.text.toString().toInt()
+        val winner = textView.text.toString()
+
+        val stats = Stats(legNumber,winner, tvAvgP1.text.toString(),tvAvgP2.text.toString(),tvThrownP1.text.toString().substring(7).toInt(),tvThrownP2.text.toString().substring(7).toInt() )
         viewModel.insertGame(stats)
         tvScoreP1.setText("501")
         tvScoreP2.setText("501")
@@ -203,7 +214,9 @@ class GameActivity : AppCompatActivity() {
         tvAvgP1.setText("Avg: 0")
         tvAvgP2.setText("Avg: 0")
     }
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun gameEnd(){
+        viewModel.deleteAllStats()
         val intent = Intent(this, EndGameActivity::class.java)
         val endgameStats = EndGameStats("Leroy", "First to 2 Legs", "Leroy vs Thomas", LocalDate.now())
         intent.putExtra(EXTRA_ENDGAME, endgameStats)

@@ -10,8 +10,8 @@ import kotlinx.android.parcel.Parcelize
 data class Stats (
     var legNumber: Int,
     var winner: String,
-    var avgp1: Int,
-    var avgp2: Int,
+    var avgp1: String,
+    var avgp2: String,
     var thrownp1: Int,
     var thrownp2: Int,
     @PrimaryKey var id: Long? = null

@@ -9,7 +9,8 @@
         android:id="@+id/tvlegNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/textview"
+        android:text="legNumber"
+        android:textColor="@color/colorButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -17,7 +18,8 @@
         android:id="@+id/tvWinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/textview"
+        android:text="Winner"
+        android:textColor="@color/colorButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,7 +27,8 @@
         android:id="@+id/tvAvgP1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/textview"
+        android:text="AVGp1"
+        android:textColor="@color/colorButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvlegNumber" />
 
@@ -33,7 +36,8 @@
         android:id="@+id/tvAvgP2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/textview"
+        android:text="Avgp2"
+        android:textColor="@color/colorButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvWinner" />
 
@@ -41,7 +45,8 @@
         android:id="@+id/tvThrownP1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/textview"
+        android:text="thrownP1"
+        android:textColor="@color/colorButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvAvgP1" />
 
@@ -49,7 +54,8 @@
         android:id="@+id/tvThrownP2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/textview"
+        android:text="thrownp2"
+        android:textColor="@color/colorButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvAvgP2" />
 </androidx.constraintlayout.widget.ConstraintLayout>

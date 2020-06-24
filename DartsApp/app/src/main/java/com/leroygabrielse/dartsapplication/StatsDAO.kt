@@ -10,4 +10,7 @@ interface StatsDAO {
 
     @Insert
     suspend fun insertStats(stats: Stats)
+
+    @Query("DELETE FROM statsTable")
+    suspend fun deleteAllGames()
 }

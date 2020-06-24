@@ -20,5 +20,9 @@ class GameActivityViewModel(application: Application): AndroidViewModel(applicat
             statsRepo.insertStats(stats)
         }
     }
-
+    fun deleteAllStats(){
+        ioScope.launch {
+            statsRepo.deleteAllStats()
+        }
+    }
 }

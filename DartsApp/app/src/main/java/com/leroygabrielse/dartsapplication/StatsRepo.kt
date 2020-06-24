@@ -19,4 +19,5 @@ class StatsRepo (context: Context){
     suspend fun insertStats(stats: Stats){
         statsDAO?.insertStats(stats)
     }
+    suspend fun deleteAllStats() = statsDAO?.deleteAllGames()
 }
