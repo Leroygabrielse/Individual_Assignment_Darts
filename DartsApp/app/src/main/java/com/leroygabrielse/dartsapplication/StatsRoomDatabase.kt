@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 
 
-@Database(entities = [Stats::class], version = 6, exportSchema = false)
+@Database(entities = [Stats::class], version = 7, exportSchema = false)
 abstract class StatsRoomDatabase: RoomDatabase(){
     abstract fun statsDao(): StatsDAO
 

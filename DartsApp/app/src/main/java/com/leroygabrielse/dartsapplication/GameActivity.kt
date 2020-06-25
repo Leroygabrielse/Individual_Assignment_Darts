@@ -21,6 +21,8 @@ const val EXTRA_ENDGAME = "EXTRA_ENDGAME"
 var playerTurn = 0
 var tempScore = 0
 var numberOfLegs = ""
+var nameP1= ""
+var nameP2= ""
 
 
 class GameActivity : AppCompatActivity() {
@@ -38,7 +40,7 @@ class GameActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.O)
     @SuppressLint("ResourceAsColor")
     private fun initViews(){
-
+        viewModel.deleteAllStats()
         val bundle: Bundle? = intent.extras
         bundle?.let{
             bundle.apply {
@@ -48,6 +50,8 @@ class GameActivity : AppCompatActivity() {
                     tvNameP1.text = "${game.playerOneName}"
                     tvNameP2.text = "${game.playerTwoName}"
                     numberOfLegs = "${game.numberOfLegsOrSets}"
+                    nameP1 = "${game.playerOneName}"
+                    nameP2 = "${game.playerTwoName}"
                 }
             }
         }
@@ -180,7 +184,7 @@ class GameActivity : AppCompatActivity() {
                 (textView4.text.toString().toInt() + 1).toString()
             )
             if(textView4.text.toString().toInt() == numberOfLegs.toInt()){
-                gameEnd()
+                gameEnd(textView5)
             }else{
                 resetLeg(textView5)
             }
@@ -218,10 +222,12 @@ class GameActivity : AppCompatActivity() {
         tvAvgP2.setText("Avg: 0")
     }
     @RequiresApi(Build.VERSION_CODES.O)
-    private fun gameEnd(){
+    private fun gameEnd(textView: TextView){
+        val winner = textView.text.toString()
+        val result = "("+ tvLegsP1.text.toString() + " - " + tvLegsP2.text.toString() +")"
         viewModel.deleteAllStats()
         val intent = Intent(this, EndGameActivity::class.java)
-        val endgameStats = EndGameStats("Leroy", "First to 2 Legs", "Leroy vs Thomas", LocalDate.now())
+        val endgameStats = EndGameStats(winner, "First to "+ numberOfLegs + " Legs", nameP1 +" vs " + nameP2, LocalDate.now(), result)
         intent.putExtra(EXTRA_ENDGAME, endgameStats)
         startActivityForResult(intent, ENDGAMESTATS_REQUEST_CODE)
     }

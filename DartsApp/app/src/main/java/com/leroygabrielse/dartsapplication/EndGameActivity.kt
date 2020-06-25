@@ -3,6 +3,7 @@ package com.leroygabrielse.dartsapplication
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -19,7 +20,8 @@ class EndGameActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_end_game)
-
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
+        actionBar?.hide()
         initViews()
         getData()
     }
@@ -36,7 +38,7 @@ class EndGameActivity : AppCompatActivity() {
                 val endGameStats: EndGameStats? = getParcelable("EXTRA_ENDGAME")
                 if (endGameStats != null){
                     stats.add(EndGameStats("${endGameStats.winner}", "${endGameStats.matchName}", "${endGameStats.contestants}",
-                        LocalDate.now()))
+                        LocalDate.now(), "${endGameStats.result}"))
                     statsAdapter.notifyDataSetChanged()
                 }
             }

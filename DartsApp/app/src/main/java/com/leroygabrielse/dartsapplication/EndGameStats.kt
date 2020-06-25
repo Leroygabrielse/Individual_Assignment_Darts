@@ -9,5 +9,6 @@ data class EndGameStats (
     val winner: String,
     val matchName: String,
     val contestants: String,
-    val date: LocalDate
+    val date: LocalDate,
+    val result: String
 ): Parcelable

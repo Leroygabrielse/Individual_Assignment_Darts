@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".EndGameActivity"></activity>
+        <activity
+            android:name=".EndGameActivity"
+            android:theme="@style/AppTheme"
+            android:label="@string/endGame"
+            />
         <activity
             android:theme="@style/AppTheme"
             android:name=".StatsActivity"
