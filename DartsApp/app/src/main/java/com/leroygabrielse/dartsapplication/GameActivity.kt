@@ -208,7 +208,7 @@ class GameActivity : AppCompatActivity() {
         val legNumber = tvLegsP1.text.toString().toInt() + tvLegsP2.text.toString().toInt()
         val winner = textView.text.toString()
 
-        val stats = Stats(legNumber,winner, tvAvgP1.text.toString(),tvAvgP2.text.toString(),tvThrownP1.text.toString().substring(7).toInt(),tvThrownP2.text.toString().substring(7).toInt() )
+        val stats = Stats(legNumber,winner, tvNameP1.text.toString() + tvAvgP1.text.toString().substring(3),tvNameP2.text.toString() + tvAvgP2.text.toString().substring(3),tvThrownP1.text.toString().substring(7).toInt(),tvThrownP2.text.toString().substring(7).toInt() )
         viewModel.insertGame(stats)
         tvScoreP1.setText("501")
         tvScoreP2.setText("501")

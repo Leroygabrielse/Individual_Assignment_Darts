@@ -4,7 +4,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.activity_game.view.*
 import kotlinx.android.synthetic.main.stats_items.view.*
+import kotlinx.android.synthetic.main.stats_items.view.tvAvgP1
+import kotlinx.android.synthetic.main.stats_items.view.tvAvgP2
+import kotlinx.android.synthetic.main.stats_items.view.tvThrownP1
+import kotlinx.android.synthetic.main.stats_items.view.tvThrownP2
 
 class StatsAdapter (private val stats: List<Stats>) : RecyclerView.Adapter<StatsAdapter.ViewHolder>() {
 
@@ -12,8 +17,8 @@ class StatsAdapter (private val stats: List<Stats>) : RecyclerView.Adapter<Stats
         fun bind(stats: Stats) {
             itemView.tvlegNumber.text = "Leg number: " + stats.legNumber.toString()
             itemView.tvWinner.text = "Winner: " + stats.winner
-            itemView.tvAvgP1.text = "Average player 1: " + stats.avgp1
-            itemView.tvAvgP2.text = "Average player 2: " +stats.avgp2
+            itemView.tvAvgP1.text = "Average " +stats.avgp1
+            itemView.tvAvgP2.text = "Average " +stats.avgp2
             itemView.tvThrownP1.text = "Darts Thrown player 1: " +stats.thrownp1.toString()
             itemView.tvThrownP2.text ="Darts Thrown player 2: " +stats.thrownp2.toString()
         }
