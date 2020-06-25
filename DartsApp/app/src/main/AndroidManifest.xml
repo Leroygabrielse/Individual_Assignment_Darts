@@ -10,7 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity android:name=".EndGameActivity"></activity>
-        <activity android:name=".StatsActivity" />
+        <activity
+            android:name=".StatsActivity"
+            android:label="@string/title_activity_stats"
+            />
         <activity android:name=".GameActivity" />
         <activity android:name=".HistoryActivity" />
         <activity android:name=".MainActivity">

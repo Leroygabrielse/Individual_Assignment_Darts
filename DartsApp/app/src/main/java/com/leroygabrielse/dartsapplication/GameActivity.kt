@@ -180,8 +180,10 @@ class GameActivity : AppCompatActivity() {
             )
             if(textView4.text.toString().toInt() == numberOfLegs.toInt()){
                 gameEnd()
+            }else{
+                resetLeg(textView5)
             }
-            resetLeg(textView5)
+
         }
     }
     @SuppressLint("SetTextI18n")
