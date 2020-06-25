@@ -23,6 +23,7 @@ var tempScore = 0
 var numberOfLegs = ""
 var nameP1= ""
 var nameP2= ""
+var turns = 0
 
 
 class GameActivity : AppCompatActivity() {
@@ -133,16 +134,21 @@ class GameActivity : AppCompatActivity() {
 
         }
         btnUndo.setOnClickListener {
-            /*if(tvScoreP1.text.toString().toInt() != 501 && tvScoreP2.text.toString().toInt() != 501 ){
+            if(turns>0){
                 if (playerTurn.equals(0)){
                     undoScore(tvScoreP2, tvAvgP2, tvThrownP2)
+                    ivTurnP1.visibility = View.INVISIBLE
+                    ivTurnP2.visibility = View.VISIBLE
                     playerTurn += 1
                 }
                 else {
                     undoScore(tvScoreP1, tvAvgP1, tvThrownP1)
+                    ivTurnP1.visibility = View.VISIBLE
+                    ivTurnP2.visibility = View.INVISIBLE
                     playerTurn -= 1
                 }
-            }*/
+            }
+
 
         }
 
@@ -173,7 +179,7 @@ class GameActivity : AppCompatActivity() {
         //Avg
         val totalScore = 501 - textView.text.toString().toDouble()
         val totalTurns = textView3.text.toString().substring(7).toInt() / 3
-
+        turns += 1
         textView2.setText(
             "Avg: " + Math.round(totalScore/totalTurns * 100) / 100.0
         )
@@ -195,17 +201,23 @@ class GameActivity : AppCompatActivity() {
     private fun undoScore(textView: TextView, textView2: TextView, textView3: TextView){
         //set score back
         textView.setText(
-            textView.text.toString().toInt() + tempScore
+            (textView.text.toString().toInt() + tempScore).toString()
         )
         //set thrown dartsback
         textView3.setText(
-            "Darts: " + ((textView3.text.toString().substring(7).toInt()) + 3)
+            "Darts: " + ((textView3.text.toString().substring(7).toInt()) - 3)
         )
         val totalScore = 501 - textView.text.toString().toDouble()
         val totalTurns = textView3.text.toString().substring(7).toInt() / 3
-        textView2.setText(
-            "Avg: " + (totalScore / totalTurns * 100).roundToInt() / 100.0
-        )
+        if(totalTurns == 0){
+            textView2.setText(
+                "Avg: 0")
+        }else{
+            textView2.setText(
+                "Avg: " + (totalScore / totalTurns * 100).roundToInt() / 100.0
+            )
+        }
+
     }
 
     private fun resetLeg(textView: TextView){
